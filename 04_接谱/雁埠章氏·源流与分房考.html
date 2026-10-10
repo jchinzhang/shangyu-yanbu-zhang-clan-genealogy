@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雁埠章氏 · 源流与分房考</title>
+<style>
+  :root{
+    --paper:#faf7f0; --ink:#2b2723; --ink2:#5b534a; --line:#ddd2bd;
+    --accent:#8a2b1f; --accent2:#a8762a; --band:#f2ece0;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:0 18px 60px;
+    background:var(--paper); color:var(--ink);
+    font-family:"Songti SC","SimSun","Noto Serif SC",serif;
+    line-height:1.85; font-size:16.5px;
+  }
+  .wrap{max-width:900px;margin:0 auto}
+  header{
+    text-align:center; padding:38px 0 22px; border-bottom:3px double var(--accent); margin-bottom:30px;
+  }
+  header h1{
+    font-family:"STKaiti","KaiTi","Kaiti SC",serif;
+    font-size:34px; margin:0 0 8px; letter-spacing:.18em; color:var(--accent);
+  }
+  header .sub{font-size:15px;color:var(--ink2);letter-spacing:.08em}
+  header .src{font-size:13px;color:#8d8375;margin-top:10px}
+  h2{
+    font-family:"STKaiti","KaiTi",serif;
+    font-size:23px; margin:44px 0 14px; padding-left:13px;
+    border-left:5px solid var(--accent); letter-spacing:.05em;
+  }
+  h3{font-size:17.5px;margin:26px 0 10px;color:var(--accent2);letter-spacing:.03em}
+  h3::before{content:"◆ ";font-size:12px}
+  p{margin:9px 0}
+  .quote{
+    background:#fffdf8; border-left:4px solid var(--accent2);
+    padding:12px 16px; margin:14px 0; font-family:"STKaiti","KaiTi",serif;
+    font-size:16px; line-height:1.95; color:#3a332b; border-radius:0 4px 4px 0;
+  }
+  .quote .from{display:block;text-align:right;font-size:12.5px;color:#8d8375;font-family:sans-serif;margin-top:6px}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;background:#fffdf8}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--band);font-weight:600;letter-spacing:.02em}
+  td.g{font-family:"STKaiti","KaiTi",serif;color:var(--accent);white-space:nowrap}
+  .star{color:var(--accent);font-weight:700}
+  .warn{
+    background:#fdf3ec; border:1px solid #e6c9b0; border-left:5px solid var(--accent);
+    padding:12px 16px; margin:16px 0; border-radius:0 4px 4px 0; font-size:15px;
+  }
+  .note{font-size:13.5px;color:#7d7468}
+
+  /* 时间轴 */
+  .tl{margin:24px 0 8px;border-left:3px solid var(--accent2);padding-left:0}
+  .tl .it{position:relative;padding:0 0 22px 26px}
+  .tl .it::before{
+    content:"";position:absolute;left:-9px;top:8px;width:13px;height:13px;
+    background:var(--paper);border:3px solid var(--accent);border-radius:50%;
+  }
+  .tl .yr{font-family:sans-serif;font-size:13px;color:var(--accent);letter-spacing:.04em;font-weight:600}
+  .tl .tt{font-family:"STKaiti","KaiTi",serif;font-size:17px;margin:1px 0 2px}
+  .tl .dd{font-size:14.5px;color:var(--ink2)}
+
+  /* 分房树 */
+  .tree{background:#fffdf8;border:1px solid var(--line);border-radius:6px;padding:18px 14px;margin:18px 0;overflow-x:auto}
+  .tree ul{list-style:none;margin:0;padding-left:22px;position:relative}
+  .tree ul ul{border-left:1px dashed #c9bda6}
+  .tree li{position:relative;padding:4px 0 4px 18px}
+  .tree li::before{
+    content:"";position:absolute;left:0;top:16px;width:14px;height:1px;background:#c9bda6;
+  }
+  .tree li.branch::before{top:14px}
+  .tree .n{font-family:"STKaiti","KaiTi",serif;font-size:16px}
+  .tree .s{font-family:sans-serif;font-size:12px;color:#8d8375;margin-right:6px}
+  .tree .gen{font-family:sans-serif;font-size:11.5px;color:#a8762a;margin-left:4px}
+  .fang{display:inline-block;background:#f6e9d8;border:1px solid #e0c9a4;color:#8a2b1f;
+        font-size:13px;padding:1px 8px;border-radius:11px;margin-left:6px;font-family:"STKaiti",serif}
+  .mine{background:#fbe3dd;border-color:#e0a595;font-weight:700}
+  .lvl1>.n,.lvl1>span.n{font-size:17px;font-weight:600}
+
+  figure{margin:16px 0;text-align:center}
+  figure img{max-width:100%;border:1px solid var(--line);border-radius:4px;background:#fff}
+  figcaption{font-size:13px;color:#8d8375;margin-top:6px}
+  .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:16px}
+  .gal figure{margin:0}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);
+         font-size:13px;color:#8d8375;text-align:center;line-height:1.9}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>雁埠章氏 · 源流与分房考</h1>
+  <div class="sub">始迁之岁　·　道九公之世　·　五房之析</div>
+  <div class="src">据《上虞雁埠章氏宗谱》十三册（民国十四年乙丑·1925年印本，全十六卷）辑录<br>
+  标 <span class="star">★</span> 者为调原谱影像逐字核读，余为古籍 OCR 文本交叉比对</div>
+</header>
+
+<h2>〇、一句话回答</h2>
+<table>
+  <thead><tr><th style="width:24%">问</th><th>答</th></tr></thead>
+  <tbody>
+    <tr><td class="g">奎文公何时迁来雁埠？</td>
+        <td>谱载「<b>迄今八百餘年，厯宋元明清</b>」（卷末跋）。奎文公为宋嘉祐二年（1057）状元章衡之<b>第四子</b>，<b>以宦遊自福建浦城徙居上虞雁埠</b>；民国《松夏志》《绍兴府志》系其事于<b>宋绍圣初（1094，章衡时知越州）</b>。按代际速率反推，实际迁居约在<b>南宋（十二世纪末至十三世纪）</b>。<br><span class="note">详见专题报告《奎文公身世考·谱外史料互证》</span></td></tr>
+    <tr><td class="g">道九公生活在什么年代？</td>
+        <td>谱标「<b>明</b>·錦衣指揮執戟郎」。按代际速率反推，约在<b>元末明初（十四世纪中后期）</b>。</td></tr>
+    <tr><td class="g">分房是怎么回事？</td>
+        <td><b>不是行政划分，是"始迁祖之下按支派分宗立祠"</b>。奎文公二子分两大枝 —— 长子時亮公为<b>老房</b>，次子子亮公一系再析为<b>安、相、聰、和</b>四房。五房各立宗祠，故村内共有<b>四座章氏宗祠</b>。你家（受田公）属 <b>相房 → 俊支</b>。</td></tr>
+  </tbody>
+</table>
+
+<h2>一、奎文公何时迁来雁埠</h2>
+
+<h3>1.1 谱内三个年代坐标</h3>
+<p>谱里没有给奎文公写生卒年（卷三世录原文：<b>「生卒佚，壽七十」</b>），但给了三个可用的年代坐标：</p>
+<table>
+  <thead><tr><th style="width:5%">#</th><th>原文</th><th style="width:20%">出处</th></tr></thead>
+  <tbody>
+    <tr><td>①</td><td>「吾章氏自唐康州刺史及公，至九世孫<b>宋嘉祐丁酉狀元衡公</b>，生宣教郎奎文公，<b>始遷上虞雁埠，迄今八百餘年，厯宋元明清</b>，疉遭兵燹，舊譜蕩然」</td><td>册10 卷末〈跋〉p150 ★</td></tr>
+    <tr><td>②</td><td>「獨念吾奎文公宅兹而後<b>未有譜牒者七八百年</b>」</td><td>册01 卷二〈序〉p16 ★</td></tr>
+    <tr><td>③</td><td>「自宣教郎奎文公始遷上虞雁埠，<b>迄今八百餘年</b>，子姓至四五千人」</td><td>册01 卷一〈序〉</td></tr>
+  </tbody>
+</table>
+<p>→ 谱内自述：<b>「八百餘年」与「七八百年」两说</b>，换算即<b>公元 1125—1225 年间</b>，落在<b>宋室南渡前后</b>。</p>
+<div class="quote">
+  坐标①里的「宋嘉祐丁酉狀元衡公」是一个<b>绝对历史锚点</b>：章衡（1025—1099），字子平，建州浦城人，<b>宋嘉祐二年丁酉（1057）状元</b>，《宋史》有传（谱内「子平公」即此）。奎文公为其子。
+</div>
+
+<h3>1.2 迁居的两条原因（须分清）</h3>
+<table>
+  <thead><tr><th style="width:20%">原因</th><th>原文</th><th style="width:24%">出处</th></tr></thead>
+  <tbody>
+    <tr><td class="g">主因 · 宦遊</td><td>「世居浦城，<b>公以宦遊遂家於上虞雁埠</b>，緜緜延延，迄今二十五傳，環雁埠居者千百家」</td><td>册09 卷八〈晦武公傳〉p63 ★</td></tr>
+    <tr><td class="g">性情 · 退居</td><td>奎文公「澹泊其心，高尚其志，承累世簪纓，<b>不喜繁囂，退居僻壤，擇雁埠爲廬墓之鄉</b>」</td><td>册01 卷一〈序〉</td></tr>
+  </tbody>
+</table>
+<div class="warn">
+  <b>⚠️ 一处易错点须说明：</b>谱中另有「<b>奈遭海寇亂，遂至淪失</b>」之语（册01 卷二序、册10 卷末跋引〈分房譜啟〉）。这句说的是<b>奎文公迁来时本有谱牒，后来遭海寇之乱而散失</b>——<b>不是</b>迁居的原因。迁居原因是<b>宦游</b>，谱牒散失是其后之事。
+</div>
+
+<h3>1.3 世系坐标：他是"浦城章氏"的第十世</h3>
+<table>
+  <thead><tr><th>原文</th><th style="width:32%">出处</th></tr></thead>
+  <tbody>
+    <tr><td>「公諱奎文，字晦武，宋授宣教郎，<b>爲及公第十世孫</b>」</td><td>册09 卷八〈傳〉p63 ★</td></tr>
+    <tr><td>「<b>第十世</b>　雁埠始祖　奎文」（版心）</td><td>册01 卷三〈雁埠總世錄〉p144 ★</td></tr>
+    <tr><td>「吾族自<b>康州刺史及公傳十世至宣教郎奎文公</b>，由浦城遷居雁埠」</td><td>册01 卷一〈序〉</td></tr>
+  </tbody>
+</table>
+<p><b>浦城章氏世系</b>：唐人 <b>章及</b>（康州刺史）→ 章修 → <b>章仔鈞</b>（太傅，练夫人之夫，浦城章氏共祖）→ 章仁嵩 → 章文竦 → 章承訓 → 章克忠 → 章訢 → <b>章衡</b>（九世，状元）→ <b>奎文公</b>（十世，迁雁埠）。</p>
+
+<h3>1.4 代际速率反推：落在南宋</h3>
+<p>谱里虽未记奎文公生卒，但下游有硬年份，可用"每代约三十年"的常规速率反推：</p>
+<table>
+  <thead><tr><th style="width:10%">世次</th><th style="width:26%">名</th><th style="width:20%">生年</th><th>依据</th></tr></thead>
+  <tbody>
+    <tr><td>24</td><td>俊七公（諱軻賢）</td><td><b>约 1645</b></td><td>其三子日彰「生<b>康熙十二年癸丑</b>」（1673），故父约生 1645</td></tr>
+    <tr><td>25</td><td>雅十一公</td><td>约 1665</td><td>俊七公次子</td></tr>
+    <tr><td>30</td><td>志緒公</td><td><b>1841</b></td><td>谱载「生道光二十一年辛丑」</td></tr>
+    <tr><td>31</td><td>齊堯公</td><td><b>1858</b></td><td>谱载「生咸豐八年戊午」</td></tr>
+    <tr><td>32</td><td>受田公</td><td><b>1886</b></td><td>谱载「生光緒十二年丙戌」</td></tr>
+    <tr><td>35</td><td>（杰群辈）</td><td><b>1990</b></td><td>口传</td></tr>
+  </tbody>
+</table>
+<p><b>反推</b>：</p>
+<ul>
+  <li>以 24 世（约 1645）上推：24 → 10 世共 14 代，<code>1645 − 14×30 ≈ 1225</code> 年</li>
+  <li>以 35 世（1990）上推：35 → 10 世共 25 代，<code>1990 − 25×30 ≈ 1240</code> 年</li>
+</ul>
+<p>两条独立路径都指向 <b>12 世纪末至 13 世纪</b>，即<b>南宋中后期</b>。</p>
+<div class="quote">
+  <b>结论：</b>奎文公迁居雁埠，时在<b>南宋</b>（距今约七百年，谱称「八百餘年」）；而谱系与方志另系其事于<b>宋绍圣初（1094，随父衡知越州）</b>，上距章衡（1025—1099）约当代。两说之年差即本案唯一硬矛盾，详见 §1.5。
+</div>
+
+<h3>1.5 存疑与谱外查证（2026-10-10 修订）</h3>
+
+<h4 style="font-size:16px;margin:20px 0 8px;color:var(--ink2)">〔一〕谱内自承的两处异说</h4>
+<p>册01 卷三 p144 世录原文（★已核图）：</p>
+<div class="quote">
+  「<b>衡公三子</b>，字晦武，授宣教郎，事詳傳，<b>生卒佚</b>，壽七十……考會譜初編卷六，<b>公行四</b>，書九十五……與雁埠鈔譜<b>各有異點，因代遠年湮無可質証，今兩說兼存以俟攷正</b>。」
+  <span class="from">册01 卷三〈雁埠總世錄〉p144</span>
+</div>
+<ul>
+  <li>同一页里既写「衡公<b>三</b>子」，又注「公行<b>四</b>」；</li>
+  <li>册09〈職銜〉表作「<b>子平公四子</b>」；册09 卷八〈晦武公傳〉作「兄弟六人皆通仕籍，<b>公行居四</b>」。</li>
+</ul>
+
+<h4 style="font-size:16px;margin:20px 0 8px;color:var(--ink2)">〔二〕谱外查证：「奎文＝章衡第四子」成立</h4>
+<p>本谱 p144 所引「<b>會譜初編卷六</b>」，即民国八年（1919，<b>早于本谱六年</b>）铅印的 <b>《章氏会谱德庆初编》三十卷</b>（章贻贤辑，苏浙皖湘鄂各宗之会谱，上海图书馆藏）。其卷六〈第一至十世世系表〉原文：</p>
+<div class="quote">
+  「<b>奎文　衡公四子</b>。舊譜授<b>宣教郎</b>，茲按<b>新昌班竹譜</b>，字<b>晦武</b>，性純厚，接賓客，春風滿座。配<b>朱氏</b>，一曰葉氏。舊譜<b>子四：時亮、進亮、子亮、喜亮</b>，茲查班竹譜尚有子宗亮。　<b>上虞祖</b>」
+  <span class="from">《章氏会谱德庆初编》卷六〈第一至十世世系表〉（1919）</span>
+</div>
+<p><b>七路互证：</b></p>
+<table>
+  <thead><tr><th style="width:34%">来源</th><th>记载</th></tr></thead>
+  <tbody>
+    <tr><td><b>《章氏会谱德庆初编》卷六</b>（1919）</td><td>「奎文　<b>衡公四子</b>……<b>上虞祖</b>」</td></tr>
+    <tr><td><b>维基百科·章衡</b>（据《宋史》卷347 等）</td><td>來祖章仔鈞→玄祖章仁嵩→高祖章文竦→曾祖章承訓→祖章克忠→<b>父章訢</b></td></tr>
+    <tr><td><b>民国《松夏志》</b></td><td>「章氏，世居浦城，<b>自宣教郎奎文，宋紹聖初以父衡知越州，遂家雁埠</b>」</td></tr>
+    <tr><td><b>《绍兴府志》</b></td><td>「章衡，<b>哲宗紹聖元年（1094）知越州</b>」</td></tr>
+    <tr><td><b>《上虞地名文化寻迹》</b>（2023，中国文史出版社）</td><td>「……<b>其子章奎文定居於雁埠</b>」</td></tr>
+    <tr><td><b>23 魔方祖源库</b>（O-MF61941）</td><td>「始祖章奎文……<b>谱载为浦城章及十世孙、章衡之子</b>」</td></tr>
+    <tr><td><b>《浦城章氏世系源流暨分遷各支記》</b></td><td>上虞等县「则<b>第四子仁嵩公之裔</b>也」</td></tr>
+  </tbody>
+</table>
+<div class="good">→ <b>「奎文公为章衡第四子、浦城章氏第十世孙、上虞雁埠始迁祖」可以坐实</b>，非雁埠谱一家之言。<b>此前「明清攀附」之疑，据此撤回。</b><br>
+<span class="note">惟 23 魔方一处作「三子」，与其同段「生四子」自相矛盾，当系转录之误。</span></div>
+
+<h4 style="font-size:16px;margin:20px 0 8px;color:var(--ink2)">〔三〕仍未弥合的硬矛盾：第 10—16 世的代际年数</h4>
+<table>
+  <thead><tr><th style="width:44%">环节</th><th>年数</th></tr></thead>
+  <tbody>
+    <tr><td>章衡卒 1098/1099；其第四子约生</td><td><b>1060—1080</b></td></tr>
+    <tr><td>谱第 <b>16</b> 世道九公</td><td>谱标「<b>明</b>·錦衣指揮執戟郎」（锦衣卫设于洪武十五年 1382）；由受田公（32世·1886）上推亦应在 <b>14—15 世纪</b></td></tr>
+    <tr><td>奎文→道九</td><td>谱载<b>仅 6 代</b>，却要跨约 <b>300 年</b>（约 50 年/代）——<b>显然不合</b></td></tr>
+  </tbody>
+</table>
+<p>两种可能（不为古人强作断语）：<b>(a)</b> 第 11—15 世之间<b>脱代</b>（宋末元初兵燹「舊譜蕩然」，卷末〈跋〉自承「或一人而名號化作兩世，或父下而不詳子系」）——则道九公实为奎文公第十至十一代孙；<b>(b)</b> 「奎文为衡子」系浦城章氏系统的<b>早期联宗上接</b>。</p>
+<div class="warn">
+  另：迁居年份「宋绍圣初（1094）」系<b>以父衡知越州之年为锚的推定</b>（社群亦质疑：1094 年衡已七十，若奎文为其子当已四十），非谱中原笔；奎文享年亦有 <b>九十五（会谱）／七十（雁埠钞谱）</b> 两说。
+</div>
+<div class="good">专题报告：<b>《奎文公身世考·谱外史料互证》</b>（同目录 .md／.html）——含全部原文引录、来源 URL 清单与取舍理由。</div>
+
+<h2>二、道九公生活在什么年代</h2>
+
+<h3>2.1 谱里怎么标</h3>
+<div class="quote">
+  「<b>第十六世道九公，諱珊，存四公三子，明·錦衣指揮執戟郎</b>」
+  <span class="from">册09〈職銜〉表 p89 ★</span>
+</div>
+<div class="quote">
+  「<b>道九</b>　存四公三子，<b>諱珊，錦衣指揮執戟郎</b>，配廉氏、張氏、王氏、山氏，<b>生子五：泰一、泰二、泰三、泰四、泰五</b>」
+  <span class="from">册01 卷三〈雁埠總世錄〉p148 ★（版心标"相聰和祖"）</span>
+</div>
+<p>另：<b>墓在正宗菴面前麻地</b>（正宗菴为雁埠村内旧庵堂，全谱作墓地坐标者六十余处）。</p>
+
+<h3>2.2 代际速率反推：元末明初</h3>
+<p>16 → 25 世（约 1665）共 9 代，<code>1665 − 9×30 ≈ 1395</code> 年（明洪武年间）。区间测算：</p>
+<table>
+  <thead><tr><th style="width:24%">每代间隔</th><th style="width:26%">推得年代</th><th>对应</th></tr></thead>
+  <tbody>
+    <tr><td>25 年</td><td>约 1440 年</td><td>明宣德</td></tr>
+    <tr><td>30 年</td><td>约 1395 年</td><td>明洪武</td></tr>
+    <tr><td>35 年</td><td>约 1350 年</td><td>元至正</td></tr>
+  </tbody>
+</table>
+<p>→ 综合：<b>元末明初（十四世纪中后期）</b>。</p>
+
+<h3>2.3 官职佐证：锦衣卫是明代官制</h3>
+<p><b>锦衣卫设于明洪武十五年（1382）</b>，"锦衣指挥"为明代特有武职。谱内第十四大—十六世<b>多人任明官</b>，可互相印证：</p>
+<table>
+  <thead><tr><th style="width:10%">世次</th><th style="width:22%">名</th><th>官职</th><th style="width:24%">出处</th></tr></thead>
+  <tbody>
+    <tr><td>15</td><td>大輔公</td><td>「<b>仕明</b>爲清江令」</td><td>册09 卷八传</td></tr>
+    <tr><td>16</td><td>閔忠公</td><td>「<b>明</b>司經局洗馬，加授奉議大夫」</td><td>册09〈職銜〉</td></tr>
+    <tr><td>16</td><td class="g">道九公</td><td>「<b>明</b>錦衣指揮執戟郎」</td><td>册09〈職銜〉</td></tr>
+  </tbody>
+</table>
+<p>→ 三处同标"明"，且都落在第十五、十六世，<b>彼此自洽</b>：道九公与其同辈閔忠公，均为<b>明初人</b>。</p>
+
+<h3>2.4 道九公为什么重要</h3>
+<ol>
+  <li><b>他是"相、聰、和"三房共祖</b> —— 五子中泰一（相房）、泰二（聰房）、泰五（和房）各开一房，故册01 p148 版心在其名下直标「<b>相聰和祖</b>」；</li>
+  <li><b>村内"相聰和三房宗祠"即三房合祠</b>，卷十三〈祠產〉首条祀产即「<b>九都八里章 · 章道九公祭 · 雁莊承糧</b>」；</li>
+  <li><b>他是你家（受田公）的直系先祖</b> —— 受田公一支的支派全称正是「<b>相房 · 道九公下 · 泰一公子 · 炫二公俊支派</b>」（册08 卷五中 世录标题，逐页可见）。</li>
+</ol>
+
+<h2>三、分房是怎么回事</h2>
+
+<h3>3.1 一句话原理</h3>
+<p><b>"分房" = 始迁祖以下按支派分宗立祠。</b>它既是<b>血缘分支</b>（谁是谁的子孙），也是<b>祭祀与族产单位</b>（各房有各房的宗祠、祀田、房谱、房内排行）。族人日常自称"我是相房俊支的"，指的正是这两重身份。</p>
+
+<h3>3.2 五房总图</h3>
+<p class="note">据册01 卷三〈雁埠總世錄〉版心栏标逐页核出（p144 / p148 / p150 / p151 ★）。</p>
+<div class="tree">
+<ul>
+  <li class="lvl1"><span class="s">十世</span><span class="n">奎文公</span><span class="gen">雁埠始祖 · 宣教郎 · 由福建浦城徙居上虞雁埠</span>
+    <ul>
+      <li><span class="s">十一世</span><span class="n">時亮公</span><span class="gen">奎文公长子 · 承議郎</span><span class="fang">老 房 祖</span>
+        <ul>
+          <li><span class="s">十二—十四世</span><span class="n">臬 → 應科 → 裕二·裕三·裕四·裕五</span></li>
+          <li><span class="s">十五—十六世</span><span class="n">裕二 → 大輔（明清江令）…</span><span class="fang">老房前支</span><span class="fang">老房後支</span></li>
+          <li><span class="s">十五—十六世</span><span class="n">裕四 → 顏二 → 閔文·閔忠·閔安</span></li>
+        </ul>
+      </li>
+      <li><span class="s">十一世</span><span class="n">子亮公</span><span class="gen">奎文公次子 · 承節郎</span><span class="fang">匯頭祖</span><span class="fang">安·相·聰·和 四房之祖</span>
+        <ul>
+          <li><span class="s">十二—十四世</span><span class="n">棐 → 志科 → 裕一</span>
+            <ul>
+              <li><span class="s">十五—十六世</span><span class="n">存一 → 道三·道八</span><span class="fang">匯頭裕五公支</span></li>
+              <li><span class="s">十五世</span><span class="n">存四公</span><span class="gen">迪功郎</span><span class="fang">安·相·聰·和 四房共祖</span>
+                <ul>
+                  <li><span class="s">十六世</span><span class="n">道二公</span><span class="fang">安 房 祖</span>
+                    <ul>
+                      <li><span class="s">十七世</span><span class="n">能一 · 能二</span><span class="fang">甯支</span><span class="fang">朝支</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="s">十六世</span><span class="n">道七公</span></li>
+                  <li><span class="s">十六世</span><span class="n">道九公</span><span class="gen">諱珊 · 明·錦衣指揮執戟郎</span><span class="fang">相·聰·和 三房共祖</span>
+                    <ul>
+                      <li><span class="s">十七世</span><span class="n">泰一公</span><span class="fang">相 房 祖</span>
+                        <ul>
+                          <li><span class="s">十八世</span><span class="n">炫一</span><span class="fang">綬支</span></li>
+                          <li><span class="s">十八世</span><span class="n">炫二</span><span class="fang mine">俊支 ★ 你家（受田公）所属</span>
+                            <ul><li><span class="s">十九—三十二世</span><span class="n">廉二 → 仁二 → 相二 → 炳一 → 應二 → 俊七 → 雅十一 → 銘廿 → 檢三十七 → 祖善 → 宗貞 → 志緒 → 齊堯 → <b>受田</b></span></li></ul>
+                          </li>
+                          <li><span class="s">十八世</span><span class="n">炫三</span><span class="fang">兌支</span></li>
+                        </ul>
+                      </li>
+                      <li><span class="s">十七世</span><span class="n">泰二公</span><span class="fang">聰 房 祖</span><span class="gen">子：靑·紅·綠·白</span></li>
+                      <li><span class="s">十七世</span><span class="n">泰三公</span><span class="gen">子：盛一·盛二</span></li>
+                      <li><span class="s">十七世</span><span class="n">泰四公</span></li>
+                      <li><span class="s">十七世</span><span class="n">泰五公</span><span class="fang">和 房 祖</span><span class="gen">子：輝一·輝二·輝三 → 象支·昇支·恭支</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<h3>3.3 五房 ↔ 村内四座宗祠</h3>
+<div class="warn"><b>注意：五房只立了四祠</b> —— 因为"相、聰、和"三房合建一祠。</div>
+<table>
+  <thead><tr><th style="width:36%">祠堂</th><th>所出</th><th style="width:30%">出处</th></tr></thead>
+  <tbody>
+    <tr><td>雁埠<b>老房</b>支宗祠</td><td>奎文公长子 <b>時亮公</b> 一系</td><td>卷十二〈營建〉、卷十三〈祠產〉</td></tr>
+    <tr><td>雁埠<b>安房甯支</b>宗祠</td><td>存四公长子 <b>道二公</b> 一系（甯支）</td><td>同上</td></tr>
+    <tr><td>雁埠<b>安房朝支</b>宗祠</td><td>同上（朝支）</td><td>同上</td></tr>
+    <tr><td><b>雁埠相聰和三房宗祠</b></td><td>存四公三子 <b>道九公</b> 一系 ← <b>你家所属</b></td><td>同上</td></tr>
+  </tbody>
+</table>
+<p class="note">四祠在卷一〈圖目〉中各有祠堂图（册01 p31）。</p>
+
+<h3>3.4 分房的三次文献节点</h3>
+<p>族谱屡毁于兵燹，分房谱系是分三次才理清的（册10 卷末〈跋〉p150–152 ★）：</p>
+<table>
+  <thead><tr><th style="width:30%">时间</th><th style="width:24%">事</th><th>原文要点</th></tr></thead>
+  <tbody>
+    <tr><td><b>清康熙三十五年丙子</b>（1696）</td><td>觉民公手编<b>钞谱五帙</b></td><td>「覺民公手編<b>鈔譜五帙曰仁義禮智信</b>」（以"仁義禮智信"为五册编号，即俗称"五房钞谱"）</td></tr>
+    <tr><td>清乾隆四十年乙未（1775）</td><td>際隆公继续钞传</td><td>「續鈔傳」</td></tr>
+    <tr><td><b>清同治/光绪间</b></td><td>畅亭公（諱達顯）作<b>〈分房譜啟〉</b></td><td>「諱達顯作<b>分房譜啟</b>，謂奎文公徒虞本有譜牒，乃逢海寇亂，譜因以失」</td></tr>
+    <tr><td><b>民国十一—十四年</b>（1922—1925）</td><td>正式纂修十六卷宗谱</td><td>壬戌秋起、乙丑夏蕆事，邑人钱蘋湘总纂，「卷分十六，體備歐蘇」</td></tr>
+  </tbody>
+</table>
+<div class="quote">
+  跋末自道甘苦：「<b>閱年八百，厯世三十五，其間之錯誤良多，或一人而名號化作兩世，或父下而不詳子系，或徙遠而不歸宗</b>，種種疑竇只得均付闕如」——这也是今日接谱必须逐条核图的原因。
+  <span class="from">册10 卷末〈跋〉p152 ★</span>
+</div>
+
+<h3>3.5 你家在分房图中的坐标</h3>
+<div class="quote" style="font-family:'Kaiti SC',monospace;font-size:15.5px;line-height:2.1">
+奎文公(10) → 子亮(11) → 棐(12) → 志科(13) → 裕一(14) → 存四(15)<br>
+→ 道九(16)【相聰和祖】→ 泰一(17)【相房祖】→ 炫二(18)【俊支】<br>
+→ 廉二(19) → 仁二(20) → 相二(21) → 炳一(22) → 應二(23)<br>
+→ 俊七(24) → 雅十一(25) → 銘廿(26) → 檢三十七(27) → 祖善(28)<br>
+→ 宗貞(29) → 志緒(30) → 齊堯(31) → <b>受田(32)【＝章寿田，太爷爷】</b><br>
+→ 开文(33) → 新华(34) → 杰群(35) → 贤逸(36)
+</div>
+<p><b>支派全称</b>：「<b>相房 · 道九公下 · 泰一公子 · 炫二公俊支派</b>」——即：相房之下、道九公的泰一公一脉、再由炫二公分出的"俊支"。<br>
+<b>祠堂归属</b>：村内<b>相聰和三房宗祠</b>。</p>
+
+<h2>四、代际速率检验表（方法论）</h2>
+<p>谱内奎文公、道九公<b>均未记生卒年</b>，故只能"以硬年份锚点 + 常规代际速率"双向校验：</p>
+<table>
+  <thead><tr><th style="width:12%">世次</th><th style="width:26%">名</th><th style="width:22%">生年</th><th>依据</th></tr></thead>
+  <tbody>
+    <tr><td>10</td><td>奎文公</td><td>生卒佚</td><td>谱明载"生卒佚，壽七十"</td></tr>
+    <tr><td>16</td><td>道九公</td><td>未载</td><td>谱标"明"</td></tr>
+    <tr><td>24</td><td>俊七公</td><td>约 1645</td><td>据其子日彰生 1673 反推</td></tr>
+    <tr><td>25</td><td>雅十一公</td><td>约 1665</td><td>俊七公次子</td></tr>
+    <tr><td>30</td><td>志緒公</td><td><b>1841</b></td><td>确</td></tr>
+    <tr><td>31</td><td>齊堯公</td><td><b>1858</b></td><td>确</td></tr>
+    <tr><td>32</td><td>受田公</td><td><b>1886</b></td><td>确</td></tr>
+    <tr><td>35</td><td>杰群</td><td><b>1990</b></td><td>口传</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li><b>每代按 30 年计</b>：10 世 ≈ <b>1225</b>；16 世 ≈ <b>1395</b></li>
+  <li>该法假定"平均三十年一代"，战乱、晚婚、早卒会拉长或缩短实际间隔，故只取<b>世纪级</b>（南宋 / 元末明初），不取具体年份。</li>
+</ul>
+<div class="warn">
+  <b>自洽性检查（2026-10-10 修订）：</b>若按代际速率，奎文公约 1225 生，则 16 世道九公（约 1395）恰落明初，与谱标"明"<b>吻合</b>；若按谱系/方志（奎文＝章衡第四子，约 1060—1080 生），则道九公（14—15 世纪）与奎文公相隔 <b>仅 6 代而跨约 300 年</b>，<b>无法衔接</b>。<br>
+  → 经谱外查证，「奎文＝章衡第四子」<b>已由《章氏会谱德庆初编》卷六等多源证实，不能视为攀附</b>（见 §1.5）；因此本矛盾的正解，应是<b>第 11—15 世之间脱代</b>，而非上接之误。
+</div>
+
+<h2>五、附记：谱首的两篇余杭章氏序</h2>
+<p>谱首除民国十四年乙丑（1925）本族族长的两篇序外，<b>另有两篇余杭章氏宗人的序</b>（册01 卷一 p13–15 ★已核图）：</p>
+<table>
+  <thead><tr><th style="width:16%">序</th><th style="width:32%">落款</th><th>原句</th></tr></thead>
+  <tbody>
+    <tr><td>其一</td><td>「餘杭宗子 <b>籛</b> 序，時年七十四」</td><td>——</td></tr>
+    <tr><td>其二</td><td>「民國十四年乙丑三月　日　<b>炳麟</b>」</td><td>「余家<b>居餘杭</b>，先世自<b>分水</b>來，蓋在明中世」；「吾宗自<b>太傅公</b>至今傳三十餘世，枝葉繁衍徧於大江上下」</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li>两序都自称章氏，且溯至"太傅公"（即浦城<b>章仔鈞</b>）——说明<b>余杭章氏与上虞雁埠章氏是联宗通谱的关系</b>。</li>
+  <li>"炳麟"一篇自述"余家餘杭，先世自分水來"，与<b>章炳麟（太炎，1869—1936，浙江余杭人）</b>的家世相合，<b>疑即章太炎所撰</b>。此为待考线索，不作定论。</li>
+</ul>
+
+<h2>六、原谱影像（点开可放大核对）</h2>
+<div class="gal">
+  <figure><img src="源流影像/1_始迁祖奎文公世录_p0144.png" alt="奎文公世录"><figcaption>册01 卷三 p144　十世奎文公；版心"雁埠始祖/老房祖/匯頭祖/安相聰和祖"</figcaption></figure>
+  <figure><img src="源流影像/5_总世系图十至十四世_p0130.png" alt="总世系图"><figcaption>册01 卷二 p130　〈雁埠總世系圖〉十世至十四世</figcaption></figure>
+  <figure><img src="源流影像/7_奎文公传_p0063.png" alt="奎文公传"><figcaption>册09 卷八 p63　〈晦武公傳〉"世居浦城，公以宦遊遂家於上虞雁埠"</figcaption></figure>
+  <figure><img src="源流影像/2_十六世道二道九_p0148.png" alt="道九公"><figcaption>册01 卷三 p148　十六世道二（安房甯朝祖）、道九（相聰和祖）</figcaption></figure>
+  <figure><img src="源流影像/8_职衔表明锦衣指挥_p0089.png" alt="职衔表"><figcaption>册09 p89　〈職銜〉"道九公諱珊，存四公三子，明·錦衣指揮執戟郎"</figcaption></figure>
+  <figure><img src="源流影像/3_十七世相聰和_p0150.png" alt="十七世"><figcaption>册01 卷三 p150　十七世泰五（和房祖）；老房前支/後支</figcaption></figure>
+  <figure><img src="源流影像/4_相房綬俊兌三支_p0151.png" alt="相房三支"><figcaption>册01 卷三 p151　相房綬支（炫一）/ 俊支（炫二 ★你家）/ 兌支（炫三）</figcaption></figure>
+  <figure><img src="源流影像/9_卷末跋八百余年_p0150.png" alt="卷末跋"><figcaption>册10 卷末〈跋〉p150　"始遷上虞雁埠，迄今八百餘年，厯宋元明清"</figcaption></figure>
+  <figure><img src="源流影像/10_卷末跋2_p0151.png" alt="卷末跋2"><figcaption>册10 p151　"康熙丙子覺民公手編鈔譜五帙曰仁義禮智信"</figcaption></figure>
+  <figure><img src="源流影像/6_余杭章氏序_p0014.png" alt="余杭章氏序"><figcaption>册01 卷一 p14　余杭章氏序（"余家居餘杭，先世自分水來"）</figcaption></figure>
+  <figure><img src="源流影像/11_俊七公_p0115.png" alt="俊七公"><figcaption>册08 p115　二十四世俊七公（受田公一脉上溯节点）</figcaption></figure>
+</div>
+
+<footer>
+  《上虞雁埠章氏宗谱》源流与分房考　|　据民国十四年乙丑（1925）十六卷印本辑录<br>
+  全件结论均标注出处与核录方式；凡谱内自相矛盾处，两说并陈并说明取舍理由，不代谱主作决断。
+</footer>
+
+</div>
+</body>
+</html>

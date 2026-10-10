@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>雁埠今地 · 谱中地名今考（地图）</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#faf7f0;
+    font-family:"Songti SC","SimSun","Noto Serif SC",serif;color:#2b2723}
+  #map{position:absolute;inset:0;z-index:1}
+  .panel{
+    position:absolute;top:14px;left:14px;width:358px;max-height:calc(100% - 28px);
+    background:rgba(250,247,240,.965);border:1px solid #ddd2bd;border-radius:9px;
+    box-shadow:0 8px 30px rgba(60,45,25,.22);display:flex;flex-direction:column;
+    overflow:hidden;z-index:5;
+  }
+  .ph{padding:14px 16px 11px;border-bottom:3px double #8a2b1f;background:#f6f1e6}
+  .ph h1{margin:0;font-family:"STKaiti","KaiTi",serif;font-size:21px;letter-spacing:.1em;color:#8a2b1f}
+  .ph .sub{font-size:12.5px;color:#7d7468;margin-top:5px;letter-spacing:.02em}
+  .bar{padding:9px 12px;background:#f2ece0;border-bottom:1px solid #ddd2bd;
+       display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .bar button{
+    font-family:inherit;font-size:12.5px;padding:4px 10px;border:1px solid #d3c5ab;
+    background:#fffdf8;color:#5b534a;border-radius:14px;cursor:pointer;
+  }
+  .bar button:hover{border-color:#8a2b1f;color:#8a2b1f}
+  .bar button.on{background:#8a2b1f;border-color:#8a2b1f;color:#fffdf8}
+  .list{overflow-y:auto;padding:8px 10px 10px;flex:1}
+  .it{display:flex;gap:9px;padding:7px 9px;border-radius:6px;cursor:pointer;
+      border:1px solid transparent;align-items:flex-start}
+  .it:hover{background:#f6f1e6;border-color:#e2d6bd}
+  .it.act{background:#fbe3dd;border-color:#e0a595}
+  .dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px;margin-top:5px;
+       border:2px solid #fffdf8;box-shadow:0 0 0 1px #b9a98d}
+  .it .nm{font-family:"STKaiti","KaiTi",serif;font-size:15.5px;line-height:1.35}
+  .it .td{font-size:12px;color:#7d7468;line-height:1.5}
+  .tag{font-size:10.5px;padding:0 5px;border-radius:8px;border:1px solid #cfc2a8;
+       color:#8d8375;margin-left:5px;vertical-align:2px;font-family:sans-serif}
+  .tag.e{background:#e9f2e9;border-color:#a9c9a9;color:#356b39}
+  .detail{border-top:1px solid #ddd2bd;background:#fffdf8;padding:12px 15px;
+          max-height:41%;overflow-y:auto}
+  .detail h2{margin:0 0 6px;font-family:"STKaiti","KaiTi",serif;font-size:17px;color:#8a2b1f}
+  .detail .row{font-size:13px;line-height:1.7;margin:5px 0;color:#3a332b}
+  .detail .row b{color:#8a2b1f}
+  .q{background:#f8f3e9;border-left:3px solid #a8762a;padding:7px 10px;margin:7px 0;
+     font-family:"STKaiti","KaiTi",serif;font-size:13px;line-height:1.75;color:#3a332b;border-radius:0 3px 3px 0}
+  .lg{padding:9px 15px;border-top:1px solid #ddd2bd;background:#f6f1e6;
+      font-size:11.5px;color:#8d8375;line-height:1.7;font-family:sans-serif}
+  .lg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:1px}
+  .fold{position:absolute;top:14px;left:388px;z-index:6;background:rgba(250,247,240,.96);
+    border:1px solid #ddd2bd;border-radius:6px;padding:5px 9px;font-size:12.5px;cursor:pointer;
+    box-shadow:0 3px 12px rgba(60,45,25,.16);color:#5b534a;display:none;font-family:inherit}
+  @media (max-width:760px){
+    .panel{width:min(92vw,340px);max-height:56%}
+    .detail{max-height:45%}
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div class="panel" id="panel">
+  <div class="ph">
+    <h1>雁埠今地 · 谱中地名今考</h1>
+    <div class="sub">《上虞雁埠章氏宗谱》所载地名 → 今日坐标<br>
+    底图 腾讯地图　坐标 GCJ-02　<span style="color:#356b39">实测</span>＝地图检索定位，<span style="color:#8d8375">约</span>＝约略位置</div>
+  </div>
+  <div class="bar">
+    <button id="btnAll" class="on">全部</button>
+    <button data-c="jia">头甲~五甲</button>
+    <button data-c="cun">村·街</button>
+    <button data-c="an">庵·庙·公所</button>
+    <button data-c="du">渡·塘·江</button>
+    <button id="btnHome">回到章家村</button>
+  </div>
+  <div class="list" id="list"></div>
+  <div class="detail" id="detail"></div>
+  <div class="lg">
+    <i style="background:#8a2b1f"></i>雁埠·章家村　
+    <i style="background:#7d3a8c"></i>悬沙头甲~五甲　
+    <i style="background:#7a4a1e"></i>庵庙公所　
+    <i style="background:#1f4e79"></i>渡口　
+    <i style="background:#2f6b4f"></i>塘堤　
+    <i style="background:#6b6b6b"></i>邻村<br>
+    以「正宗庵」（谱中六十余处墓地的坐标原点）为锚点，半径约 2.5 km 示意圈即雁埠故地核心。<br>
+    <b style="color:#7d3a8c">悬沙四至：</b>东至百沥海塘（前江村）· 南至梁祝大道（三环）· 西至曹娥江 · 北至虞舜大道（四环），总面积 15.64 km²；沿江自东南（百官）向西北（吕家埠）编号头甲→五甲。<b>三甲</b>已并入二甲（1961）、名亡于今图（约略点位，非实测）。<br>
+    <b style="color:#8a2b1f">渡口兴废：</b>章家义渡→<b>三甲渡，已废·名亡</b>（2006 三环大桥建成后停渡，无桥承其名）｜西华义渡→<b>五甲渡，已停渡·名存</b>（桥名、公园名沿用至今）<br>
+    <span class="note">老地图见同目录〈悬沙头甲至五甲·老地图与今地定位.html〉。</span>
+  </div>
+</div>
+<button class="fold" id="fold">显示名录</button>
+
+<!-- 1. 代理配置必须在 SDK 之前 -->
+<script type="text/javascript">
+  window._TMapSecurityConfig = {
+    serviceHost: 'http://127.0.0.1:__WB_HTTP_PORT__/_TMapService/_wbt/__WB_TMAP_SECRET__',
+  };
+</script>
+<script src="https://map.qq.com/api/gljs?v=1.exp&libraries=service"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ───────── 谱中地名清单 ─────────
+     pre = 约略坐标（未检索到时的兜底，GCJ-02）
+     kw  = 地图检索关键词（优先用于实测定位） */
+  var SITES = [
+    { id:'zj', cat:'cun', color:'#8a2b1f', name:'雁埠 · 章家村',
+      today:'崧厦街道章家村（原章家街·临江·联兴·章家 四村）',
+      pre:[30.0682,120.8422], kw:'崧厦街道章家村',
+      xie:'雁埠（一作雁步）', src:'民国《崧厦志》',
+      q:'章氏世居福建浦城，宋紹聖初，宣教郎章奎文從父衡知越州，遂家雁埠。後族旺，分居於此，遂名章家。',
+      note:'谱中「雁埠」即此。今章家村由章家街、临江、联兴、章家四村 2006 年合并，2437 户、6685 人，面积约 3.5 平方公里，东临陆家村、西接裴家村，面临百崧公路。' },
+
+    { id:'zzan', cat:'an', color:'#7a4a1e', name:'正宗菴',
+      today:'今「正宗庵」，上虞区崧厦街道环镇南路',
+      pre:[30.0705,120.8435], kw:'正宗庵',
+      xie:'村内旧庵', src:'谱 册01 卷三 p148',
+      q:'道九墓在正宗菴面前麻地。',
+      note:'★ 谱中奎文公、道九公等六十余处墓地均以「正宗菴」为坐标原点。该庵今天仍以「正宗庵」之名立于环镇南路，附近公交站为裴家、崧华学校南、章家村 2、老三楼、崧华学校、时华村——证明谱中墓地群与今日章家村老村重合。' },
+
+    { id:'zjj', cat:'cun', color:'#a8762a', name:'章家街',
+      today:'章家村章家街自然村（今有章家街农贸市场）',
+      pre:[30.0680,120.8470], kw:'章家街农贸市场',
+      xie:'章家街村', src:'2006 年村规模调整文件',
+      q:'撤銷章家街村、聯興村、章家村、臨江村，以其區域合併設立章家村。',
+      note:'章家街为原四村之一，老村中心地带，即「章家」旧聚落。谱中「章家」「章家廟」「章陸村」皆指此一带。' },
+
+    { id:'zjm', cat:'an', color:'#7a4a1e', name:'章家廟',
+      today:'章家村内旧庙（义渡亭所在、岁荒领粮处）',
+      pre:[30.0668,120.8448], kw:'章家庙',
+      xie:'家庙', src:'谱 卷十三〈祠產〉',
+      q:'義渡有亭在章家廟左側。',
+      note:'清末章滌園（本族 27 世）传记亦载：每当青黄不接时，有困难者「可去章家廟领取救济」。庙今存否待实地核。' },
+
+    { id:'yueyin', cat:'an', color:'#7a4a1e', name:'樾蔭公所（越蔭）',
+      today:'原在「聰房道地北」，今已无存',
+      pre:[30.0692,120.8462], kw:'崧华学校',
+      xie:'掩埋·水龙', src:'谱 卷十二〈營建〉 ＋ 《章滌園傳記》',
+      q:'在本邨珠字一千四百號地五分六釐七毫五絲……顏其額曰越蔭，內設掩埋、水龍兩舉，壬寅冬邑令儲家藻頗嘉之，爲撰徵信錄序。',
+      note:'《章滌園傳記》（上虞论坛）：光绪戊戌年（1898）章先生与其兄弟发起募款，修建樾荫公所，地址在聰房道地北；又于樾荫公所内设水龙局。——与谱卷十二完全咬合，且「聰房」正是谱中五房之一。' },
+
+    { id:'du', cat:'du', color:'#1f4e79', name:'章家義渡 → 三甲渡（已廢·名亡）',
+      today:'原渡口在曹娥江东岸；2006 年三环大桥（梁祝大道）建成后停渡。无桥承其名，今图上已不可寻。',
+      pre:[30.0470,120.8430], kw:'曹娥江三环大桥',
+      xie:'南通會稽', src:'谱 卷十六 ／《三渡六桥说今古》',
+      q:'雁埠渡南通會稽。／邑志所載章家義渡……其創設爲咸豐十年……渡之田產有四十餘畝……毋論遠近客商概不准收取分文。',
+      note:'★ 今图上找不到「三甲渡」不是漏标：①原三甲渡稍东即市三环线桥（三环大桥／梁祝大道，2006 年建成），「自该桥建成后，三甲渡即失去作用而停渡」；②没有任何桥继承「三甲渡」这个名字；③1995 年裁弯取直后江道改移，原渡口已不在今江边。→ 渡废而名亦亡。「章长庆」与谱中主倡者同名，人事全对；此渡亦是谱「雁埠渡南通會稽」那一条。' },
+
+    { id:'xihua', cat:'cun', color:'#1f4e79', name:'西華義渡 · 西華塘',
+      today:'西华村；其义渡后改称「五甲渡」',
+      pre:[30.0800,120.8020], kw:'西华村',
+      xie:'西華廟·西華周家塘', src:'谱 ／《三渡六桥说今古》',
+      q:'二曰西華義渡，在章家義渡西向約五華里。由西華桑、顧、王、周、蒲等衆姓捐田而設。西南問出，對岸爲塘角村……後因渡近五甲村，故以五甲渡而存名。',
+      note:'谱中「西華塘」「西華廟」「西華周家塘」即此西华村；网文所列西华捐田诸姓中正有「周」姓，与「西華周家塘」相合。此渡即「五甲渡」之前身。' },
+
+    { id:'wujiadu', cat:'du', color:'#1f4e79', name:'五甲渡（已停渡·地名存）',
+      today:'2013 南北中心大道五甲渡大桥；2025.3 五甲渡城市公园（56 万 m²，官方称「千年古渡口」）',
+      pre:[30.0700,120.8150], kw:'五甲渡大桥',
+      xie:'渡名 ⇒ 桥名 ⇒ 公园名', src:'《三渡六桥说今古》／上虞区水利局',
+      q:'西華義渡……後因渡近五甲村，故以五甲渡而存名。／随着五甲渡大桥的竣工，五甲渡已完成了它的历史使命。如今五甲渡已成为历史地名。',
+      note:'★ 与三甲渡正相反：该江段最早建成的桥就叫「五甲渡桥」（1995 年裁弯取直开挖前，先在平地上构筑、然后挖通），桥名承了渡名；其后 1997 年裁弯取直配套桥、2013 年南北中心大道桥都叫「五甲渡大桥」，2025 年开园的「五甲渡城市公园」再承其名，央视《你好时光》还在此取景。→ 渡废而名存。这正是今天地图上找得到五甲渡、找不到三甲渡的原因。' },
+
+    { id:'xuansha', cat:'du', color:'#2f6b4f', name:'懸沙 · 捏鰨塗（裁彎取直故道）',
+      today:'1995.12—1998.6 五甲渡地段「裁弯取直」：以 1700 m 微弯河道取代 7300 m「Ω」形河湾；今外五甲村一带',
+      pre:[30.0820,120.8000], kw:'外五甲村',
+      xie:'江灣內之灘地', src:'《三渡六桥说今古》／绍兴市水利局',
+      q:'後因沿江成村落曰懸沙，設有頭、二、三、四、五甲村。／1995年12月……对五甲渡地段江道实施「裁弯取直」工程……以长1700米的微弯河道，取代了7300余米长的「Ω」形河弯。',
+      note:'★ 这就是谱里「雁埠團沙地」的真身：曹娥江在此画一个「Ω」大弯，弯内滩地称「捏鰨塗」、俗称「懸沙」，水缓沙沉、滩地年年长——雁埠团之所以能煎盐、能丈沙地认粮，全因这一弯。外五甲村相传即明末清初章氏来此开荒所立，今村仍以章姓为主；谱「雁埠團分內外十戶」正对头～五甲村。1998 年裁直后一年两涝从此不再，老江道遂成故道。' },
+
+    { id:'lvjia', cat:'du', color:'#6b6b6b', name:'吕家埠（雁埠團西界）',
+      today:'崧厦街道吕家埠村，曹娥江东岸',
+      pre:[30.0920,120.7860], kw:'吕家埠',
+      xie:'原亦名雁埠', src:'《丁地考》',
+      q:'雁埠團在今天的上虞區崧廈街道百瀝海塘以南，東至陸家村，西至吕家埠，因其轄地古稱雁埠（一作雁步）而得名。',
+      note:'雁埠本义即「停船的埠头」；吕家埠村自述原名雁埠、后因靠江近水成为崧厦内河对外的港口而改名。两说并存，同属雁埠团故地。' },
+
+    { id:'toujia', cat:'jia', color:'#7d3a8c', name:'头甲（悬沙·头甲村）',
+      today:'百官街道 头甲社区；头甲公寓一带',
+      pre:[30.0455,120.8545], kw:'头甲公寓',
+      xie:'頭甲村', src:'浙江日报〈「悬沙」之变〉2019 ／ 博雅地名网',
+      q:'悬沙是片名，系百官镇原头甲、二甲、三甲、四甲、燕子窠、大王家、下王家 7 个自然村之总称。地处曹娥江东岸，东至百沥海塘（前江村），南至梁祝大道（三环），西至曹娥江，北至虞舜大道（四环）。',
+      note:'★ 1961 年建头甲生产大队（含大王家、小王家）。沿曹娥江自东南（百官）向西北（吕家埠）依次编号：头甲→二甲→三甲→四甲→五甲，故头甲离百官最近。今百官街道头甲社区。' },
+
+    { id:'erjia', cat:'jia', color:'#7d3a8c', name:'二甲（悬沙·二甲村）',
+      today:'百官街道 二甲社区（区划代码 330604001040）',
+      pre:[30.0431,120.8455], kw:'二甲社区',
+      xie:'懸沙二甲', src:'谱 册07 卷五中午集 p51、52、63',
+      q:'……住懸沙二甲。（先鶴、鶴隆、鶴文等）',
+      note:'★ 谱内实测有「住懸沙二甲」诸人（安房甯支）。1961 年建二甲大队，含三甲。社区东临四甲、南临头甲、西临职教中心、北临体育中心，占地约 16 万 m²。' },
+
+    { id:'sanjia', cat:'jia', color:'#a8762a', name:'三甲（已并入二甲 · 名亡）',
+      today:'无今地名；约在原二甲社区东北至江边一带，1961 年并入二甲大队',
+      pre:[30.0460,120.8500], kw:'曹娥江三环大桥',
+      xie:'懸沙三甲', src:'谱 册05 卷五下申集 p29–57；册07 p37–66',
+      q:'相房兌支派珊貴公長子松林等，住懸沙三甲。／邑志所載章家義渡……因渡口近三甲村，而改稱三甲渡。',
+      note:'★ 章氏聚居最密的一甲（相房兌支、安房甯支两房）。村名亡于 1961 年并队；渡名亡于 2006 年停渡（三环大桥建成，无桥承「三甲渡」之名）。故今图找不到「三甲」。本点位为约略位置，勿作实测引用。' },
+
+    { id:'sijia', cat:'jia', color:'#7d3a8c', name:'四甲（悬沙·四甲村）',
+      today:'百官街道 四甲社区；四甲新家园一带',
+      pre:[30.0494,120.8513], kw:'四甲新家园',
+      xie:'四甲村', src:'浙江日报〈「悬沙」之变〉2019 ／ 博雅地名网',
+      q:'1961 年建四甲生产大队，含燕子窠。',
+      note:'谱内未见「住四甲」记载（章氏或无人居此）。四至南界为梁祝大道（三环），北界虞舜大道（四环）。' },
+
+    { id:'neiwujia', cat:'jia', color:'#7d3a8c', name:'内五甲村（悬沙·五甲）',
+      today:'崧厦街道 内五甲村（2012 年起曹娥街道托管）',
+      pre:[30.0530,120.8290], kw:'内五甲村',
+      xie:'中以沙塘为界，塘内＝内五甲', src:'浙江日报 2019 ／ 博雅地名网',
+      q:'1940 年前江金奎元筑沙塘（王公沙塘），以塘为界分内、外五甲。',
+      note:'「内外五甲」与谱《丁地考》「雁埠團分內外十戶」的内外二分法完全一致。' },
+
+    { id:'waijia', cat:'jia', color:'#7d3a8c', name:'外五甲村（悬沙·五甲）',
+      today:'崧厦街道 外五甲村（330604005233）；2020 年 6 月已列征迁范围',
+      pre:[30.0507,120.8271], kw:'外五甲村',
+      xie:'塘外＝外五甲', src:'博雅地名网／百度百科「外五甲村」',
+      q:'外五甲村原是曹娥江边冲积而成的沙滩，俗称悬沙。据《章氏宗谱》记载，始祖章氏移居曹娥江边垦植，筑舍定居而成村落。依曹娥江，自百官头甲、二甲、三甲、四甲顺序排列，其位居五甲。',
+      note:'★ 官修地名志直接引《章氏宗谱》，村今仍以章姓为主（270 户 770 人）。三面临江，1995 年裁弯取直前每年至少两涝。' },
+
+    { id:'baili', cat:'du', color:'#2f6b4f', name:'雁埠塘 · 大沙牆 · 百瀝海塘',
+      today:'曹娥江东岸海塘（百沥海塘）一线',
+      pre:[30.0880,120.8180], kw:'百沥海塘',
+      xie:'臨江大牆', src:'谱 卷十二〈營建〉',
+      q:'咸豐七年知縣劉書田、連仲愚，用三畏公議創修臨江大牆，工長三千六百丈，綿亘三十餘里，章氏盡力於此且三世。',
+      note:'谱中「雁埠塘」是村前江堤，即百沥海塘的一段。清末族人章滌園（27 世）1900—1906 年年年疏浚裁直江道、修筑加固江堤，「力保王公沙塘内数万亩沙地」。' },
+
+    { id:'lj', cat:'cun', color:'#6b6b6b', name:'陸家村（章陸）',
+      today:'崧厦街道陆家村',
+      pre:[30.0700,120.8580], kw:'陆家村',
+      xie:'章陸村·義塚', src:'谱 卷十二／卷十三',
+      q:'章陸村義塚，光緒十七年，二十三處。',
+      note:'雁埠团东界。旧称「章陆」——章家与陆家一带；《章滌園傳記》即以「章陆章家村」标其籍贯。' },
+
+    { id:'shihua', cat:'cun', color:'#6b6b6b', name:'時華村',
+      today:'崧厦街道时华村',
+      pre:[30.0755,120.8385], kw:'时华村',
+      xie:'华镇片', src:'官方施教区文件',
+      q:'崧華學校小學部：華鎮片（章家村、陸家村、時華村、西華村、三華村、內五甲村）。',
+      note:'「华镇」1992 年前是上虞的一个乡，1992 年 4 月联丰、华镇、新建三乡并入崧厦镇；今华镇片六村即谱中雁埠故地的主体。' },
+
+    { id:'dingze', cat:'cun', color:'#6b6b6b', name:'華澤（今丁澤村）',
+      today:'崧厦街道丁泽村（原丁家埠、华泽二村）',
+      pre:[30.0560,120.8180], kw:'丁泽村',
+      xie:'九都華澤口', src:'谱 卷十二〈營建〉',
+      q:'節孝坊、碑亭在九都華澤口，光緒二年。',
+      note:'谱中九都的「华泽口」，2006 年与丁家埠村合并为丁泽村。九都即崧厦一带的旧都图建制（每都八里），谱中多处以「九都八里」标村中公建位置。' },
+
+    { id:'zhengjia', cat:'cun', color:'#6b6b6b', name:'裴家（章家村西邻）',
+      today:'崧厦街道三华村一带（原裴家村）',
+      pre:[30.0690,120.8320], kw:'崧华学校南',
+      xie:'邻村', src:'村界记载',
+      q:'章家村位於崧廈鎮東南位置，東臨陸家村，西接裴家村。',
+      note:'《章滌園傳記》「王公沙塘内数万亩沙地」「后郭狮子庙至吕家埠段江流多纡曲」，即此一带江岸。' }
+  ];
+
+  var HOME = [30.0682,120.8422];
+  var map, markers, labels, circle, active=null, filter='all';
+
+  function pinSvg(c){
+    var s='<svg xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 26 34">'
+      +'<path d="M13 33S25 19.6 25 12A12 12 0 1 0 1 12c0 7.6 12 21 12 21z" fill="'+c+'" stroke="#fffdf8" stroke-width="1.6"/>'
+      +'<circle cx="13" cy="12" r="4.6" fill="#fffdf8"/></svg>';
+    return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);
+  }
+
+  function toLL(v){
+    if(!v) return null;
+    if(typeof v.getLat==='function') return [v.getLat(), v.getLng()];
+    if(typeof v.lat==='number') return [v.lat, v.lng];
+    if(typeof v.lat==='function') return [v.lat(), v.lng()];
+    if(typeof v==='string' && v.indexOf(',')>0){ var a=v.split(','); return [parseFloat(a[1]),parseFloat(a[0])]; }
+    return null;
+  }
+  function inShangyu(ll){ return ll && ll[1]>120.68 && ll[1]<120.98 && ll[0]>29.88 && ll[0]<30.22; }
+  function pois(res){
+    if(!res) return [];
+    if(res.data && res.data.length) return res.data;
+    if(res.result && res.result.data && res.result.data.length) return res.result.data;
+    if(res.detail && res.detail.pois && res.detail.pois.length) return res.detail.pois;
+    return [];
+  }
+
+  function render(){
+    if(!map) return;
+    var geoms=[], labs=[];
+    SITES.forEach(function(s){
+      if(filter!=='all' && s.cat!==filter) return;
+      var p = s.pos || s.pre;
+      geoms.push({ id:s.id, styleId:s.id, position:new TMap.LatLng(p[0],p[1]), properties:s });
+      labs.push({ id:'L'+s.id, styleId:'l', position:new TMap.LatLng(p[0],p[1]), content:s.name });
+    });
+    try{ markers.setGeometries(geoms); }catch(e){}
+    try{ labels.setGeometries(labs); }catch(e){}
+  }
+
+  function drawList(){
+    var box=document.getElementById('list');
+    box.innerHTML='';
+    SITES.forEach(function(s){
+      if(filter!=='all' && s.cat!==filter) return;
+      var d=document.createElement('div');
+      d.className='it'+(active===s.id?' act':'');
+      d.innerHTML='<span class="dot" style="background:'+s.color+'"></span>'
+        +'<span><span class="nm">'+s.name+'</span>'
+        +'<span class="tag'+(s.exact?' e':'')+'">'+(s.exact?'实测':'约')+'</span>'
+        +'<div class="td">→ '+s.today+'</div></span>';
+      d.onclick=function(){ go(s.id); };
+      box.appendChild(d);
+    });
+  }
+
+  function showDetail(s){
+    var e=document.getElementById('detail');
+    e.innerHTML='<h2>'+s.name+'</h2>'
+      +'<div class="row"><b>谱中：</b>'+s.xie+'　<b>出处：</b>'+s.src+'</div>'
+      +'<div class="q">'+s.q+'</div>'
+      +'<div class="row"><b>今地：</b>'+s.today+'</div>'
+      +'<div class="row">'+s.note+'</div>';
+  }
+
+  function go(id){
+    var s=null; SITES.forEach(function(x){ if(x.id===id) s=x; });
+    if(!s) return;
+    active=id; drawList(); showDetail(s);
+    var p=s.pos||s.pre;
+    try{ map.setCenter(new TMap.LatLng(p[0],p[1])); map.setZoom(s.exact?16:15); }catch(e){}
+  }
+
+  function resolve(s){
+    if(!s.kw) return;
+    var svc;
+    try{ svc=new TMap.service.Search({pageSize:6}); }catch(e){ return; }
+    try{
+      svc.search({ keyword:s.kw }).then(function(res){
+        var arr=pois(res); if(!arr.length) return;
+        var pick=null;
+        for(var i=0;i<arr.length;i++){
+          var ll=toLL(arr[i].location||arr[i].latLng||arr[i].latlng);
+          if(!ll) continue;
+          if(inShangyu(ll)){ pick=ll; break; }
+          if(!pick) pick=ll;
+        }
+        if(!pick) return;
+        s.pos=pick; s.exact=inShangyu(pick); render(); drawList();
+      }).catch(function(){});
+    }catch(e){}
+  }
+
+  function init(){
+    var list=document.getElementById('list');
+    if(typeof TMap==='undefined'){ return; }
+    map=new TMap.Map('map',{ center:new TMap.LatLng(HOME[0],HOME[1]), zoom:14, pitch:0, rotation:0 });
+
+    try{
+      circle=new TMap.MultiCircle({ map:map, styles:{ s:new TMap.CircleStyle({
+          color:'rgba(138,43,31,0.05)', showBorder:true, borderColor:'#8a2b1f', borderWidth:2 }) },
+        geometries:[{ id:'c', styleId:'s', center:new TMap.LatLng(HOME[0],HOME[1]), radius:2500 }] });
+    }catch(e){}
+
+    try{
+      var st={};
+      SITES.forEach(function(s){ st[s.id]=new TMap.MarkerStyle({width:26,height:34,anchor:{x:13,y:34},src:pinSvg(s.color)}); });
+      markers=new TMap.MultiMarker({ map:map, styles:st, geometries:[] });
+      markers.on('click', function(ev){ if(ev && ev.geometry) go(ev.geometry.id); });
+    }catch(e){}
+
+    try{
+      labels=new TMap.MultiLabel({ map:map,
+        styles:{ l:new TMap.LabelStyle({ color:'#2b2723', size:12, offset:{x:0,y:-8},
+          alignment:'center', verticalAlignment:'middle', backgroundColor:'#fffdf8',
+          borderColor:'#c9bda6', borderWidth:1, padding:'2px 6px', borderRadius:4 }) },
+        geometries:[] });
+    }catch(e){}
+
+    render(); drawList();
+    SITES.forEach(resolve);
+    go('zzan');
+
+    document.getElementById('btnHome').onclick=function(){ 
+      try{ map.setCenter(new TMap.LatLng(HOME[0],HOME[1])); map.setZoom(14); }catch(e){}
+    };
+    document.getElementById('btnAll').onclick=function(){
+      filter='all'; active=null;
+      [].forEach.call(document.querySelectorAll('.bar button[data-c]'),function(b){b.classList.remove('on');});
+      this.classList.add('on'); render(); drawList();
+    };
+    [].forEach.call(document.querySelectorAll('.bar button[data-c]'),function(b){
+      b.onclick=function(){
+        filter=this.getAttribute('data-c'); active=null;
+        document.getElementById('btnAll').classList.remove('on');
+        [].forEach.call(document.querySelectorAll('.bar button[data-c]'),function(x){x.classList.remove('on');});
+        this.classList.add('on'); render(); drawList();
+      };
+    });
+    document.getElementById('fold').onclick=function(){
+      var p=document.getElementById('panel');
+      p.style.display='flex'; this.style.display='none';
+    };
+  }
+
+  if(document.readyState==='complete') init();
+  else window.addEventListener('load', init);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雁埠今地考 · 沧海桑田</title>
+<style>
+  :root{
+    --paper:#faf7f0; --ink:#2b2723; --ink2:#5b534a; --line:#ddd2bd;
+    --accent:#8a2b1f; --accent2:#a8762a; --band:#f2ece0;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:0 18px 60px;
+    background:var(--paper); color:var(--ink);
+    font-family:"Songti SC","SimSun","Noto Serif SC",serif;
+    line-height:1.85; font-size:16.5px;
+  }
+  .wrap{max-width:900px;margin:0 auto}
+  header{
+    text-align:center; padding:38px 0 22px; border-bottom:3px double var(--accent); margin-bottom:30px;
+  }
+  header h1{
+    font-family:"STKaiti","KaiTi","Kaiti SC",serif;
+    font-size:34px; margin:0 0 8px; letter-spacing:.18em; color:var(--accent);
+  }
+  header .sub{font-size:15px;color:var(--ink2);letter-spacing:.08em}
+  header .src{font-size:13px;color:#8d8375;margin-top:10px}
+  h2{
+    font-family:"STKaiti","KaiTi",serif;
+    font-size:23px; margin:44px 0 14px; padding-left:13px;
+    border-left:5px solid var(--accent); letter-spacing:.05em;
+  }
+  h3{font-size:17.5px;margin:26px 0 10px;color:var(--accent2);letter-spacing:.03em}
+  h3::before{content:"◆ ";font-size:12px}
+  p{margin:9px 0}
+  .quote{
+    background:#fffdf8; border-left:4px solid var(--accent2);
+    padding:12px 16px; margin:14px 0; font-family:"STKaiti","KaiTi",serif;
+    font-size:16px; line-height:1.95; color:#3a332b; border-radius:0 4px 4px 0;
+  }
+  .quote .from{display:block;text-align:right;font-size:12.5px;color:#8d8375;font-family:sans-serif;margin-top:6px}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px;background:#fffdf8}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:var(--band);font-weight:600;letter-spacing:.02em}
+  td.g{font-family:"STKaiti","KaiTi",serif;color:var(--accent);white-space:nowrap}
+  .star{color:var(--accent);font-weight:700}
+  .warn{
+    background:#fdf3ec; border:1px solid #e6c9b0; border-left:5px solid var(--accent);
+    padding:12px 16px; margin:16px 0; border-radius:0 4px 4px 0; font-size:15px;
+  }
+  .key{
+    background:#f3f7f3; border:1px solid #c3d6c3; border-left:5px solid #2f6b4f;
+    padding:12px 16px; margin:16px 0; border-radius:0 4px 4px 0; font-size:15.5px;
+  }
+  .note{font-size:13.5px;color:#7d7468}
+  .tl{margin:24px 0 8px;border-left:3px solid var(--accent2)}
+  .tl .it{position:relative;padding:0 0 22px 26px}
+  .tl .it::before{
+    content:"";position:absolute;left:-9px;top:8px;width:13px;height:13px;
+    background:var(--paper);border:3px solid var(--accent);border-radius:50%;
+  }
+  .tl .yr{font-family:sans-serif;font-size:13px;color:var(--accent);letter-spacing:.04em;font-weight:600}
+  .tl .tt{font-family:"STKaiti","KaiTi",serif;font-size:17px;margin:1px 0 2px}
+  .tl .dd{font-size:14.5px;color:var(--ink2)}
+  figure{margin:16px 0;text-align:center}
+  figure img{max-width:100%;border:1px solid var(--line);border-radius:4px;background:#fff}
+  figcaption{font-size:13px;color:#8d8375;margin-top:6px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:700px){.two{grid-template-columns:1fr}}
+  .btn{display:inline-block;margin:6px 6px 0 0;padding:6px 14px;border:1px solid var(--accent);
+    color:var(--accent);border-radius:16px;text-decoration:none;font-size:14px}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);
+         font-size:13px;color:#8d8375;text-align:center;line-height:1.9}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>雁埠今地考 · 沧海桑田</h1>
+  <div class="sub">《上虞雁埠章氏宗谱》所载地名的今日坐标</div>
+  <div class="src">据宗谱十三册（民国十四年乙丑·1925 年印本）与谱外现世文献互证<br>
+  标 <span class="star">★</span> 者为谱内外双向咬合之处</div>
+</header>
+
+<div class="key">
+  <b>起因：</b>2026 年 10 月，杰哥发来手机地图截图，图上标着「<b>正宗庵</b>」与「<b>章家街农贸市场</b>」。
+  而「正宗菴」正是家谱里六十余处墓地的坐标原点——<b>谱里那座庵，今天还立在你家老宅旁边。</b>
+</div>
+
+<h2>〇、一句话结论</h2>
+<p><b>谱里的「雁埠」，就是今天绍兴市上虞区崧厦街道的「华镇片」</b>——章家村、陆家村、时华村、西华村、三华村、内五甲村。</p>
+<ul>
+  <li>你家老宅所在的 <b>章家村</b>（原<b>章家街</b>、临江、联兴、章家四村，2006 年合并），就是谱里的「<b>章家</b>」；</li>
+  <li>谱中作为<b>六十余处墓地坐标原点</b>的「<b>正宗菴</b>」，今天仍以「<b>正宗庵</b>」之名立在<b>环镇南路</b>上（公交站：裴家、崧华学校南、<b>章家村 2</b>、老三楼、崧华学校、时华村）；</li>
+  <li>谱里的「<b>雁埠渡·章家义渡</b>」，即后来的<b>三甲渡</b>——但<b>它今天已从地图上消失</b>：2006 年三环大桥建成后停渡，且没有一座桥承其名（详见 §三·第三变）；</li>
+  <li>谱里「<b>江水數數爲患</b>」的那条娥江，东岸如今是一片<b>建制村、工业园与农贸市场</b>。</li>
+</ul>
+<p><b>沧海桑田，不是形容词，是这片地的履历</b>——雁埠本来就是曹娥江下游淤出来的滩涂草荡，明清两代在此设盐场<b>「雁埠团」</b>；章氏自宋末迁来，在这片<b>逐年长出来的沙地</b>上聚族而居，八百年长成一个行政村。</p>
+
+<p>
+  <a class="btn" href="雁埠今地·地图.html">▶ 打开交互地图（谱中地名 → 今日坐标）</a>
+</p>
+
+<h2>一、凭什么说「雁埠＝崧厦章家村」：五重复合证据</h2>
+
+<h3>1.1 民国《崧厦志》直书「遂家雁埠」★</h3>
+<div class="quote">
+  章氏世居福建浦城，宋紹聖初，宣教郎<b>章奎文從父衡知越州，遂家雁埠</b>。後族旺，分居於此，遂名章家。
+  <span class="from">民国《崧厦（夏）志》，见今崧厦街道章家村地名由来（区划代码 330604005221）</span>
+</div>
+<p>与家谱卷一〈序〉、卷八〈晦武公传〉同源。</p>
+
+<h3>1.2 《丁地考》给「雁埠团」定了四至 ★★</h3>
+<div class="quote">
+  <b>雁埠團在今天的上虞區崧廈街道百瀝海塘以南，東至陸家村，西至吕家埠，因其轄地古稱雁埠（一作雁步）而得名。宋元以來，各姓相繼在塘內聚族繁衍，尤以顧、章、陸、吕等姓爲盛。</b>
+  <span class="from">夏军波《丁地考——以上虞金山盐场「雁埠团」为例》</span>
+</div>
+<p>同文又载：清乾隆五年（1740）分设<b>金山盐场</b>，「下辖百官、<b>雁埠</b>、塘湾、东团共 4 团 31 灶」；「雁埠团滩涂广袤、水草丰盛，成为上虞最为重要的盐业作业区之一」。</p>
+<p><b>与家谱咬合</b>：谱卷十六载乾隆三十五年丈「<b>雁埠團沙地</b>」，族先祖<b>章大輔 66 官丁、章輈 10、章振維 1.597</b>，与外姓<b>鄭美 9</b> 四户在<b>金山場認糧</b>——「雁埠团」「金山场」「认粮」三个专名，与网文完全对得上。</p>
+
+<h3>1.3 「章家义渡」：同一个「章长庆」★★★</h3>
+<table>
+  <thead><tr><th style="width:20%">出处</th><th>原文</th></tr></thead>
+  <tbody>
+    <tr><td class="g">家谱 卷十三〈祠產〉</td><td>邑志所載<b>章家義渡</b>……其創設爲<b>咸豐十年</b>……渡之田產有<b>四十餘畝</b>……<b>毋論遠近客商概不准收取分文</b>；<b>章長慶</b>倡設</td></tr>
+    <tr><td class="g">《三渡六桥说今古》</td><td>一曰<b>章家義渡</b>，距崧廈市十里……該渡由清代<b>章氏里人章長慶</b>、鄭國彪等捐田而設。後因沿江成村落曰<b>懸沙</b>，設有頭、二、三、四、五甲村，因渡口近三甲村，而改稱<b>三甲渡</b>。</td></tr>
+  </tbody>
+</table>
+<p><b>人名（章長慶）、事由（捐田设义渡）、地名（章家义渡→三甲渡）三项全对</b>——这是「谱中章家村＝今日章家村」最硬的一环。</p>
+<div class="warn"><b>补记（2026-10，答杰哥问「地图上只找得到五甲渡、找不到三甲渡」）：</b>
+这个「三甲渡」今天在地图上确实查不到了——它停渡于 <b>2006 年</b>，且<b>没有任何一座桥继承它的名字</b>；而「五甲渡」因桥名、公园名一路沿用而活着。两渡同废于同一场江道变迁，却一个名存、一个名亡。详见 §三·<b>第三变</b>。</div>
+
+<h3>1.4 《章滌園傳記》：在现世文献里找到了你们谱的同族人 ★★★</h3>
+<div class="quote">
+  <b>上虞縣章陸章家村人</b>……<b>章氏宗譜第廿七世，登三公字俊良</b>。生四子：蒼玉、嘉玉、廷玉、鳴玉……章鳴玉，號滌園，字韻鏘……1877 年光緒三年十一月十三日酉時生。<br>
+  光緒戊戌年（1898）章先生與其兄弟發起募款，修建<b>樾蔭公所</b>，地址在<b>聰房道地北</b>……又於樾蔭公所內，設<b>水龍局</b>。設立<b>五甲渡義渡</b>……可去<b>章家廟</b>領取救濟。<b>章家村地處江濱</b>。
+  <span class="from">《章滌園傳記》，上虞论坛</span>
+</div>
+<p>与家谱三处咬合：</p>
+<ol>
+  <li><b>世次</b>：27 世——受田公一脉正是 26 世銘廿公 → <b>27 世檢三十七公</b>（章滌園与受田公的高祖同辈）；</li>
+  <li><b>房名</b>：「<b>聰房</b>道地」——家谱五房，正有<b>聰房</b>（泰二公房）；</li>
+  <li><b>公所</b>：家谱卷十二〈營建〉「顏其額曰<b>越蔭</b>，內設<b>掩埋、水龍</b>兩舉，壬寅冬邑令儲家藻頗嘉之，爲撰徵信錄序」——「樾蔭／越蔭」同音、「掩埋＋水龙局」两项全同、时间（1898 建、1902 邑令嘉奖）前后相续。</li>
+</ol>
+<p class="note">小异：网文作「绍兴知府储永藻」，家谱作「邑令储家藻」，或为传抄之误，不影响互证。</p>
+
+<h3>1.5 正宗菴：谱中坐标原点，今日仍是地图 POI ★★</h3>
+<div class="two">
+  <table>
+    <tbody>
+      <tr><td class="g">家谱 册01 卷三 p148</td><td>「道九墓在<b>正宗菴面前麻地</b>」（道九公＝相、聰、和三房共祖）</td></tr>
+      <tr><td class="g">家谱 卷一</td><td>「我始遷祖奎文公墓，相傳在本村<b>前麻地</b>」</td></tr>
+      <tr><td class="g">今日地图 POI</td><td><b>正宗庵</b>：浙江省绍兴市上虞区<b>环镇南路</b>；周边公交站 裴家、崧华学校南、<b>章家村 2</b>、老三楼、崧华学校、<b>时华村</b></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>→ 谱里以「正宗菴」为原点的六十余处墓地，<b>全部落在今日章家村／华镇片一两公里半径之内</b>。这等于给整部家谱的墓地记载配上了现代坐标。</p>
+
+<h2>二、古今地名对照表</h2>
+<table>
+  <thead><tr><th style="width:23%">谱中地名</th><th style="width:12%">类别</th><th style="width:32%">今日对应</th><th>依据</th></tr></thead>
+  <tbody>
+    <tr><td class="g">雁埠（一作雁步）</td><td>村 / 团</td><td>崧厦街道<b>华镇片</b>（章家·陆家·时华·西华·三华·内五甲）</td><td>民国《崧厦志》／《丁地考》 ★</td></tr>
+    <tr><td class="g">章家、章家街</td><td>村 / 街</td><td><b>章家村</b>章家街自然村（今有章家街农贸市场）</td><td>2006 年村规模调整文件 ★</td></tr>
+    <tr><td class="g">正宗菴</td><td>庵</td><td>今 <b>正宗庵</b>，环镇南路</td><td>地图 POI ＋ 用户截图 ★</td></tr>
+    <tr><td class="g">章家廟</td><td>庙</td><td>章家村内旧庙（义渡亭所在）</td><td>谱卷十三 ／《章滌園傳記》</td></tr>
+    <tr><td class="g">樾蔭公所（越蔭）</td><td>公所</td><td>原在「聰房道地北」，今无存</td><td>谱卷十二 ／《章滌園傳記》 ★</td></tr>
+    <tr><td class="g">雁埠渡·章家義渡</td><td>渡</td><td>旧称 <b>三甲渡</b>（曹娥江东岸）——<b>已废·名亡</b>：2006 年三环大桥建成后停渡，今图上不可寻</td><td>《三渡六桥说今古》 ★</td></tr>
+    <tr><td class="g">西華義渡</td><td>渡</td><td>旧称 <b>五甲渡</b>——<b>已停渡·名存</b>：今有五甲渡大桥、五甲渡城市公园</td><td>《三渡六桥说今古》 ★</td></tr>
+    <tr><td class="g">趙村義渡</td><td>渡</td><td>后与吕家埠渡合并，今存 <b>吕家埠</b>渡名</td><td>《三渡六桥说今古》</td></tr>
+    <tr><td class="g">懸沙（捏鰨塗）</td><td>江湾 / 沙地</td><td>曹娥江「Ω」形大弯圈内滩地＝谱中<b>雁埠團沙地</b>；1995—1998 裁弯取直，今 <b>外五甲村</b> 一带</td><td>《三渡六桥说今古》／绍兴市水利局 ★</td></tr>
+    <tr><td class="g">雁埠塘、大沙牆</td><td>塘堤</td><td><b>百沥海塘</b>（曹娥江东岸）一线</td><td>谱卷十二 ／《丁地考》 ★</td></tr>
+    <tr><td class="g">西華塘·西華廟·西華周家塘</td><td>塘 / 庙</td><td><b>西华村</b></td><td>村名 ＋《三渡六桥》西华捐田诸姓含「周」</td></tr>
+    <tr><td class="g">章陸村（義塚）</td><td>村 / 冢</td><td><b>章家＋陆家</b>一带（网文即称「章陸章家村」）</td><td>《章滌園傳記》 ★</td></tr>
+    <tr><td class="g">九都八里、九都華澤口</td><td>建制 / 坊</td><td><b>九都</b>＝崧厦旧都图；<b>華澤</b> 今 <b>丁泽村</b></td><td>谱卷十二 ／ 2006 年合并文件</td></tr>
+    <tr><td class="g">雁埠團（金山盐场）</td><td>盐场</td><td>崧厦曹娥江东岸沙地平原</td><td>《丁地考》 ★</td></tr>
+    <tr><td class="g">內外十戸</td><td>团甲</td><td>今 <b>内五甲村·外五甲村</b>（悬沙头～五甲村）</td><td>《三渡六桥说今古》</td></tr>
+    <tr><td class="g">前麻地（始祖墓）</td><td>墓地</td><td>章家村前，约当正宗庵—环镇南路一带</td><td>谱卷一 ／ 册01 卷三 p148</td></tr>
+  </tbody>
+</table>
+
+<h2>三、沧海桑田：这片地变过四次</h2>
+
+<h3>第一变：江 → 陆（最根本的一变）</h3>
+<p>家谱说雁埠「地瀕娥江下游，江水數數爲患」；《丁地考》解释了水患的另一面——<b>它同时在造陆</b>：</p>
+<div class="quote">
+  曹娥江……下游江道開闊，水勢漸趨平緩，又受到杭州灣海潮的強勁頂托倒灌……<b>大量泥沙在此淤積，使得兩岸灘塗、草蕩成片增長</b>，同時受到海水長時間浸漬，土性斥鹵，這爲鹽業生產提供了得天獨厚的優勢。
+  <span class="from">《丁地考》</span>
+</div>
+<p>于是：<b>滩涂草荡 → 盐场团灶（雁埠团）→ 明清围垦沙地 → 乾隆三十五年丈量认粮 → 今日建制村与工业区</b>。谱里那批「珠字一千三百十三號田」「珠字一千四百號地」的<b>字号田</b>，就是这套沙地丈量体系的遗痕。</p>
+<p><b>今日</b>：图上已是绍兴宝鸿兴金属制品、上虞逍遥工艺品等企业与公寓楼、农贸市场——<b>当年煎盐的草荡，如今是崧厦伞业的厂房</b>（章家村经济素以建筑业、伞业为主，2021、2022 连年上榜「淘宝村」）。</p>
+
+<h3>第二变：患 → 治</h3>
+<div class="tl">
+  <div class="it"><div class="yr">咸丰七年（1857）</div>
+    <div class="tt">临江大墙</div>
+    <div class="dd">知县刘书田、连仲愚用三畏公议创修，<b>工长三千六百丈，绵亘三十余里，「章氏盡力於此且三世」</b>（谱卷十二）</div></div>
+  <div class="it"><div class="yr">光绪二十六—三十二年（1900—1906）</div>
+    <div class="tt">族人章滌園（27 世）治江</div>
+    <div class="dd">「年年为治理这段曹娥江而努力」，疏浚裁直江道、修筑加固江堤，「力保王公沙塘内数万亩沙地少受水灾」</div></div>
+  <div class="it"><div class="yr">今日</div>
+    <div class="tt">百沥海塘 · 江堤公路</div>
+    <div class="dd">雁埠团故地已在塘南腹地，江水不再为患</div></div>
+</div>
+
+<h3>第三变：渡 → 桥（附：三渡的三种结局）</h3>
+<p>谱里「雁埠渡南通會稽」，义渡章程写明「<b>毋論遠近客商概不准收取分文</b>」——那是靠<b>捐田四十余亩</b>养一只渡船的年代。</p>
+<p>《三渡六桥说今古》记崧厦渡娥江旧有<b>三渡</b>，各自因江边聚落而改名：</p>
+<table>
+  <thead><tr><th style="width:16%">旧渡</th><th style="width:16%">改名</th><th>倡设 / 位置</th></tr></thead>
+  <tbody>
+    <tr><td class="g">章家義渡</td><td>→ <b>三甲渡</b></td><td>清<b>章長慶</b>、鄭國彪等捐田而设；距崧厦市十里，南出去曹娥、章镇、嵊县</td></tr>
+    <tr><td class="g">西華義渡</td><td>→ <b>五甲渡</b></td><td>西华桑、顾、王、周、蒲诸姓捐田；在章家义渡西约五里，对岸塘角村</td></tr>
+    <tr><td class="g">趙村義渡</td><td>→ <b>吕家埠渡</b></td><td>光绪十三年连氏敬睦堂置田设渡；后江道变迁而与吕家埠渡合并</td></tr>
+  </tbody>
+</table>
+
+<h4 style="font-family:'STKaiti','KaiTi',serif;color:#8a2b1f;margin:18px 0 6px">★ 关键：三渡的结局并不相同</h4>
+<table>
+  <thead><tr><th style="width:12%">渡</th><th style="width:13%">停渡</th><th style="width:38%">原因</th><th>今名</th></tr></thead>
+  <tbody>
+    <tr><td class="g">三甲渡</td><td><b>2006 年</b></td><td>原三甲渡稍东建成<b>市三环线桥</b>（三环大桥／梁祝大道，329 国道北移），「<b>自该桥建成后，三甲渡即失去作用而停渡</b>」</td><td><b>名亡</b>——无桥承其名；兼之 1995 年裁弯取直后江道改移，原渡口已不在今江边 → <b>今日地图上不可寻</b></td></tr>
+    <tr><td class="g">五甲渡</td><td>1995—1997</td><td>1995 年裁弯取直开工之前，先于<b>平地上构筑「五甲渡桥」</b>，「自该桥建成后，五甲渡、吕家埠渡同时自行消失其功能」</td><td><b>名存</b>——1997 年配套桥、2013 年南北中心大道桥皆名「<b>五甲渡大桥</b>」；2025 年 3 月开园 <b>五甲渡城市公园</b>（56 万 m²，官方与媒体径称「千年古渡口」，央视《你好时光》取景地）</td></tr>
+    <tr><td class="g">吕家埠渡</td><td>1995—1997</td><td>同上（赵村渡与吕家埠渡合并后之渡）</td><td>名存——<b>吕家埠村</b>在曹娥江东岸、南靠五甲渡大桥</td></tr>
+  </tbody>
+</table>
+<div class="warn"><b>所以杰哥说「地图上只找得到五甲渡、找不到三甲渡」是准确的，而且不是标漏了：</b>
+「五甲渡」被 <b>渡名 → 桥名 → 公园名</b> 一路继承下来；「三甲渡」没有——它先废于 2006 年的三环大桥，又因 1995 年裁弯取直、江道改移，连渡口旧址都已不在今江边。<b>同一场江道变迁，一个名存、一个名亡。</b></div>
+
+<h4 style="font-family:'STKaiti','KaiTi',serif;color:#8a2b1f;margin:18px 0 6px">这两渡的江面上，现在是六座大桥</h4>
+<p>原三甲渡稍东为<b>市三环线桥（2006）</b>｜三甲渡与五甲渡之间为<b>市四环线大桥（虞舜大桥，2008）</b>｜该江段最早建成者为<b>五甲渡桥（1995）</b>｜其东南首为<b>绍诸高速延长线（长海公路）曹娥江大桥</b>｜离五甲渡桥数百米为<b>杭甬客专曹娥江大桥（2013）</b>｜吕家埠渡稍东为<b>杭甬高速曹娥江特大桥（1996）</b>。</p>
+
+<h4 style="font-family:'STKaiti','KaiTi',serif;color:#8a2b1f;margin:18px 0 6px">顺带解开一处：「悬沙」是什么</h4>
+<p>《三渡六桥》说「后因沿江成村落曰<b>悬沙</b>，设有头、二、三、四、五甲村」——这个「悬沙」，就是曹娥江在此画的那个「<b>Ω</b>」形大弯<b>圈内的滩地</b>（俗称「<b>捏鰨塗</b>」，外五甲村即其东北角）。</p>
+<p><b>这正是谱里「雁埠團沙地」的真身</b>：江水绕弯则缓，缓则泥沙沉积、滩地年年增长——雁埠团之所以煎得出盐、丈得出「沙地」认粮，全因这一弯。<b>1995 年 12 月—1998 年 6 月</b>的裁弯取直，以 <b>1700 米</b>微弯河道取代了 <b>7300 余米</b>的「Ω」形河湾，一次投入七千多万元、挖填土方 219.8 万方；老江道从此成为故道。</p>
+<p class="note">旁证：外五甲村相传即<b>明末清初章氏</b>来此开荒所立，「村里以章姓为主」；1990 年那场特大洪水曾淹到两米多高的楼板，<b>联合国粮食署据卫星照片发现「浙江上虞有一个村庄经常受淹」，派员赴外五甲村调查</b>——这就是裁弯取直的由来。</p>
+
+<h3>第四变：族 → 行政村</h3>
+<table>
+  <thead><tr><th style="width:20%">年代</th><th>建制</th></tr></thead>
+  <tbody>
+    <tr><td class="g">宋末—清</td><td>雁埠团（盐场）／九都八里的章氏聚族而居；五房分宗，立<b>相聰和三房宗祠</b></td></tr>
+    <tr><td class="g">1956</td><td>初级社并高级社（临江、光明、联兴、三爱等）</td></tr>
+    <tr><td class="g">1983</td><td>章家街、联兴、章家、临江四个村民委员会</td></tr>
+    <tr><td class="g">1992.4</td><td><b>华镇乡</b>并入崧厦镇（联丰、华镇、新建三乡并入）</td></tr>
+    <tr><td class="g">2006.4</td><td>章家街、联兴、章家、临江<b>四村合并为章家村</b>（2437 户、6685 人，约 3.5 km²）</td></tr>
+    <tr><td class="g">2019</td><td>崧厦镇改为<b>崧厦街道</b></td></tr>
+  </tbody>
+</table>
+<p><b>你家老宅「西河沿台门」就在这个"章家"老村中心</b>——你截图里显示的章家街农贸市场与正宗庵之间，正是谱中「章家」「章家廟」所在的位置。</p>
+
+<h2>四、图证：谱页 ↔ 今日地图</h2>
+<div class="two">
+  <figure>
+    <img src="影像/道九公_相聪和祖_p0148.png" alt="册01卷三p148 道九公世录">
+    <figcaption>谱 册01 卷三 p148：「道九墓在<b>正宗菴</b>面前麻地」<br>版心标「相聰和祖」——相、聰、和三房共祖</figcaption>
+  </figure>
+  <figure>
+    <img src="今地影像/01_手机地图_正宗庵与章家街_2026.jpg" alt="今日手机地图">
+    <figcaption>2026 年今日地图：<b>正宗庵</b>标于环镇南路，<br>西南为<b>章家街农贸市场</b>——两页相隔七百年的同一块地</figcaption>
+  </figure>
+</div>
+
+<h2>五、关于老宅「西河沿台门」</h2>
+<ul>
+  <li><b>谱里查不到</b>（「西河沿」0 处、「台門」0 处）——谱例只记祠、庙、庵、亭、坊、墙、渡、冢，<b>民居台门一概不入谱</b>，找不到属正常。</li>
+  <li>但<b>今地完全合拍</b>：雁埠临娥江、有水有塘，村中河沿台门是典型的水乡形制。</li>
+  <li><b>可实地核的锚点</b>：以<b>正宗庵（环镇南路）＋章家街农贸市场</b>为中心，问一句「西河沿台门在哪条河沿上、属哪一房（大房/二房…）」，即可定到具体地块。</li>
+</ul>
+
+<h2>六、存疑与待核（如实并陈）</h2>
+<ol>
+  <li><b>「雁埠」今有两处自称</b>：章家村（据章氏谱）与 <b>吕家埠</b>（自述原名雁埠，后因成为崧厦内河对外港口而改名）。《丁地考》把「雁埠」作<b>整团之地名</b>（西至吕家埠），故两说并不相斥——都是雁埠团故地；而「雁埠渡」因倡设人为章氏<b>章长庆</b>，判归<b>章家义渡</b>。</li>
+  <li><b>雁埠团的精确四至与亩数</b>，需核对嘉庆《两浙盐法志》盐场图，及《丁地考》所引 <b>1979 年卫星锁图</b>。</li>
+  <li><b>「华镇」得名</b>（是否与谱中「九都華澤口」同源）待考——今华泽已并入丁泽村。</li>
+  <li><b>「内五甲 / 外五甲」是否即谱中「雁埠團分內外十戶」</b>——今可基本对应（内外五甲村即悬沙之头～五甲村），但「内／外」之分是否等同谱中「内外十户」，仍待核。</li>
+  <li><b>三甲渡旧址的确切位置</b>——谱与网文只记「距崧厦市十里」「原三甲渡稍东为市三环线桥」，未给经纬度；今地名已不可检索，地图上只能据 <b>三环大桥</b> 定位，待实地核。</li>
+  <li><b>「市三环线桥」是否即「曹娥江三环大桥／梁祝大道」</b>——两处记载建成时间同为 2006 年、同为 329 国道北移所建，判为同一桥，待核。</li>
+  <li><b>章家庙、樾荫公所今是否尚存</b>（祠堂四座今存否）——需实地走访。</li>
+  <li><b>谱中「章陸村」</b> 是否即今陆家村，抑或章家＋陆家合称，两说并存。</li>
+</ol>
+
+<h2>七、来源清单</h2>
+<h3>谱内</h3>
+<p class="note">册01 卷一〈序〉、卷三〈雁埠總世錄〉p144／p148；册08 卷五中；册09 卷十二〈營建〉、卷十三〈祠產〉；册10 卷十六〈雜記〉</p>
+<h3>谱外</h3>
+<ul class="note">
+  <li>夏军波《丁地考——以上虞金山盐场「雁埠团」为例》，今日头条 toutiao.com/article/7333203613126771254</li>
+  <li>蕞尔小民《三渡六桥说今古》，乡土文化网 xtwhw.cn/show.html?dir=2016/9/14&amp;id=2418</li>
+  <li>《章滌園傳記》，上虞论坛 bbs.0575bbs.com/read-htm-tid-985842.html</li>
+  <li>民国《崧厦志》（经博雅地名网转录）tcmap.com.cn/zhejiangsheng/shangyu_xiazhen_zhangjiacun.html</li>
+  <li>上虞区人民政府《关于调整崧厦镇行政村规模的批复》（2006-04-20）</li>
+  <li>崧厦街道办事处〈关于进一步明确新居民子女入学工作意见的通知〉（华镇片六村名单）</li>
+  <li>崧厦街道（百度百科）：1992 年联丰、华镇、新建三乡并入；2019 年设街道</li>
+  <li>城市吧绍兴站 正宗庵 POI（环镇南路）shaoxing.city8.com/scope/8ci6iz781manb04952_address</li>
+</ul>
+<h3>渡口兴废（2026-10 补查）</h3>
+<ul class="note">
+  <li>蕞尔小民《风雨沧桑五甲渡》，上虞论坛 bbs.0575bbs.com/read-htm-tid-899701.html</li>
+  <li>蕞尔小民《外五甲村——曹娥江畔的一颗明珠》，乡土文化网 xtwhw.cn/show.html?dir=2016/12/3&amp;id=2807</li>
+  <li>《五甲渡》，网易转载 m.163.com/news/article/D4FMNDUB000187VE.html</li>
+  <li>〈一条母亲河：娥江嬗变「三部曲」〉，绍兴日报（绍兴市水利局转载）slj.sx.gov.cn/art/2021/4/26/art_1485336_58921395.html</li>
+  <li>〈曹娥江河口的治理与开发〉（徐佳法、来移年）</li>
+  <li>〈桥见新时代！吉象带你打卡上虞的桥〉，潮新闻 tidenews.com.cn/news.html?id=2919994</li>
+  <li>〈五甲渡城市公园开园〉，绍兴日报 2025-03-31；〈上虞：曹娥江畔奏响水韵华章〉绍兴市水利局 2025-04-17；〈护好母亲河 水清又生金〉浙江日报 2025-08-27</li>
+  <li>上虞区农村公路桥梁健康监测项目合同公告（曹娥江三环大桥建成于 2006 年，位于 X530 南湖—春晖立交）</li>
+</ul>
+
+<footer>
+  上虞雁埠章氏宗谱 · 接谱工程　第 5 件成果<br>
+  交互地图：<a href="雁埠今地·地图.html">雁埠今地·地图.html</a>　｜　底图 腾讯地图　坐标 GCJ-02<br>
+  凡谱内外互见者标 ★；谱内自相矛盾或现世两说者，一律并陈取舍理由
+</footer>
+
+</div>
+</body>
+</html>
